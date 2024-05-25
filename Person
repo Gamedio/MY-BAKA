@@ -1,0 +1,19 @@
+package basketballteammanagement;
+
+public class Person {
+    private String name;
+    private String otherInformation;
+
+    public Person(String name, String otherInformation) {
+        this.name = name;
+        this.otherInformation = otherInformation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getOtherInformation() {
+        return otherInformation;
+    }
+}
