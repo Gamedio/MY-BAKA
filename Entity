@@ -1,0 +1,33 @@
+
+package basketballteammanagement;
+// Entity abstract class
+abstract class Entity {
+    protected String name;
+    protected String otherInformation;
+
+    public Entity(String name, String otherInformation) {
+        this.name = name;
+        this.otherInformation = otherInformation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOtherInformation() {
+        return otherInformation;
+    }
+
+    public void setOtherInformation(String otherInformation) {
+        this.otherInformation = otherInformation;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Other Information: " + otherInformation;
+    }
+}
