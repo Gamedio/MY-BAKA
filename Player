@@ -1,0 +1,37 @@
+package basketballteammanagement;
+
+public class Player {
+    private String name;
+    private String position;
+    private int age;
+    private double pointsPerGame;
+    private double reboundsPerGame;
+
+    public Player(String name, String position, int age, double pointsPerGame, double reboundsPerGame) {
+        this.name = name;
+        this.position = position;
+        this.age = age;
+        this.pointsPerGame = pointsPerGame;
+        this.reboundsPerGame = reboundsPerGame;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public double getPointsPerGame() {
+        return pointsPerGame;
+    }
+
+    public double getReboundsPerGame() {
+        return reboundsPerGame;
+    }
+}
