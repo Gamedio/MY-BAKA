@@ -1,0 +1,94 @@
+package basketballteammanagement;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class BasketballTeamManagementGUI extends JFrame {
+
+    private JTextArea teamStatisticsArea;
+    private JButton addPlayerButton;
+    private JTextField playerNameField;
+    private JTextField playerPositionField;
+    private JTextField playerAgeField;
+    private JTextField playerPointsField;
+    private JTextField playerReboundsField;
+
+    public BasketballTeamManagementGUI() {
+        initComponents();
+    }
+
+    private void initComponents() {
+        setTitle("Basketball Team Management");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 400);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        teamStatisticsArea = new JTextArea();
+        teamStatisticsArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(teamStatisticsArea);
+        panel.add(scrollPane, BorderLayout.CENTER);
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new GridLayout(6, 2));
+
+        JLabel nameLabel = new JLabel("Name:");
+        playerNameField = new JTextField();
+        inputPanel.add(nameLabel);
+        inputPanel.add(playerNameField);
+
+        JLabel positionLabel = new JLabel("Position:");
+        playerPositionField = new JTextField();
+        inputPanel.add(positionLabel);
+        inputPanel.add(playerPositionField);
+
+        JLabel ageLabel = new JLabel("Age:");
+        playerAgeField = new JTextField();
+        inputPanel.add(ageLabel);
+        inputPanel.add(playerAgeField);
+
+        JLabel pointsLabel = new JLabel("Points per Game:");
+        playerPointsField = new JTextField();
+        inputPanel.add(pointsLabel);
+        inputPanel.add(playerPointsField);
+
+        JLabel reboundsLabel = new JLabel("Rebounds per Game:");
+        playerReboundsField = new JTextField();
+        inputPanel.add(reboundsLabel);
+        inputPanel.add(playerReboundsField);
+
+        addPlayerButton = new JButton("Add Player");
+        addPlayerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = playerNameField.getText();
+                String position = playerPositionField.getText();
+                int age = Integer.parseInt(playerAgeField.getText());
+                double pointsPerGame = Double.parseDouble(playerPointsField.getText());
+                double reboundsPerGame = Double.parseDouble(playerReboundsField.getText());
+
+                Player player = new Player(name, position, age, pointsPerGame, reboundsPerGame);
+                Team.getInstance("Team A", new Coach("John Doe", "")).addPlayer(player); // Updated line
+
+                teamStatisticsArea.setText(Team.getInstance("Team A", new Coach("John Doe", "")).getTeamStatistics());
+            }
+        });
+        inputPanel.add(addPlayerButton);
+
+        panel.add(inputPanel, BorderLayout.SOUTH);
+
+        add(panel);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new BasketballTeamManagementGUI();
+    }
+
+    void createAndShowGUI() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}
