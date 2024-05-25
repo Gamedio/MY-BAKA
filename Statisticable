@@ -1,0 +1,7 @@
+
+package basketballteammanagement;
+// Statisticable interface
+interface Statisticable {
+    void calculateStatistics();
+    void displayStatistics();
+}
