@@ -1,0 +1,45 @@
+package basketballteammanagement;
+// AbstractTeamManagement abstract class
+abstract class AbstractTeamManagement<T extends Player> {
+    protected Team team;
+    protected T player;
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public void setPlayer(T player) {
+        this.player = player;
+    }
+
+    public void addPlayerToTeam() {
+        if (team != null && player != null) {
+            team.addPlayer(player);
+            System.out.println(player.getName() + " added to team " + team.getTeamName());
+        } else {
+            System.out.println("No team or player set to add player to the team.");
+        }
+    }
+
+    public void removePlayerFromTeam() {
+        if (team != null && player != null) {
+            try {
+                team.removePlayer(player);
+                System.out.println(player.getName() + " removed from team " + team.getTeamName());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            System.out.println("No team or player set to remove player from the team.");
+        }
+    }
+
+    public void updatePlayerDetails() {
+        if (player != null) {
+            // Logic to update player details
+            System.out.println("Player details updated: " + player.getName());
+        } else {
+            System.out.println("No player set to update details.");
+        }
+    }
+}
