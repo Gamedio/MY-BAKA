@@ -1,0 +1,29 @@
+package basketballteammanagement;
+
+import javax.swing.*;
+
+public class TestBasketballTeamManagement {
+    public static void main(String[] args) {
+        // Create a coach
+        Coach coach = new Coach("John Doe", "Some other information about the coach");
+
+        // Create a team
+        Team team = Team.getInstance("Team A", coach);
+
+        // Add players to the team
+        Player player1 = new Player("Player 1", "Point Guard", 25, 20.5, 7.3);
+        Player player2 = new Player("Player 2", "Shooting Guard", 26, 18.7, 5.8);
+
+        team.addPlayer(player1);
+        team.addPlayer(player2);
+
+        // Display team statistics
+        team.displayStatistics();
+
+        // Create GUI and display it
+        SwingUtilities.invokeLater(() -> {
+            BasketballTeamManagementGUI gui = new BasketballTeamManagementGUI();
+            gui.createAndShowGUI();
+        });
+    }
+}
