@@ -1,0 +1,59 @@
+package basketballteammanagement;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Team implements Statisticable {
+    private static Team instance;
+    private String name;
+    private Coach coach;
+    private List<Player> players;
+
+    private Team(String name, Coach coach) {
+        this.name = name;
+        this.coach = coach;
+        this.players = new ArrayList<>();
+    }
+
+    public static Team getInstance(String name, Coach coach) {
+        if (instance == null) {
+            instance = new Team(name, coach);
+        }
+        return instance;
+    }
+
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
+
+    public void removePlayer(Player player) {
+        players.remove(player);
+    }
+
+    @Override
+    public void displayStatistics() {
+        System.out.println(getTeamStatistics());
+    }
+
+    @Override
+    public void calculateStatistics() {
+        // Implement your calculation logic here
+    }
+
+    public String getTeamName() {
+        return name;
+    }
+
+    public String getTeamStatistics() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Team: ").append(name).append("\n");
+        sb.append("Coach: ").append(coach.getName()).append("\n");
+        for (Player player : players) {
+            sb.append("Player: ").append(player.getName()).append(", Position: ")
+                    .append(player.getPosition()).append(", Age: ").append(player.getAge())
+                    .append(", Points/Game: ").append(player.getPointsPerGame())
+                    .append(", Rebounds/Game: ").append(player.getReboundsPerGame()).append("\n");
+        }
+        return sb.toString();
+    }
+}
